@@ -4,17 +4,18 @@
 #include <eigen-checks/internal/gtest-equal.h>
 #include <eigen-checks/internal/traits.h>
 
-#define EIGEN_MATRIX_EQUAL(MatrixA, MatrixB) \
+#define EIGEN_MATRIX_EQUAL(MatrixA, MatrixB)                                 \
   eigen_checks::internal::MatricesNear(MatrixA, #MatrixA, MatrixB, #MatrixB, \
-      static_cast<typename eigen_checks::internal::RemoveCR<\
+      static_cast<typename eigen_checks::internal::RemoveCR<                 \
       decltype(MatrixA)>::type::Scalar>(0.0))
 
-#define EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB) \
+#define EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB)                          \
   eigen_checks::internal::MatricesNear(MatrixA, #MatrixA, MatrixB, #MatrixB, \
-      std::numeric_limits<typename eigen_checks::internal::RemoveCR<\
-      decltype(MatrixA)>::type::Scalar>::min())
+      static_cast<typename eigen_checks::internal::RemoveCR<                 \
+      decltype(MatrixA)>::type::Scalar>(                                     \
+      eigen_checks::internal::kDefaultPrecision)
 
-#define EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision) \
+#define EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision)                       \
   eigen_checks::internal::MatricesNear(MatrixA, #MatrixA, MatrixB, #MatrixB, \
                                        Precision)
 
