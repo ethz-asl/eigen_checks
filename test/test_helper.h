@@ -28,10 +28,6 @@ class EigenChecks : public testing::Test {
 
     test_vector_5_random << dis(gen), dis(gen), dis(gen), dis(gen), dis(gen);
 
-    test_vector_5_near_e_minus_8 = ground_truth_vector_5;
-    test_vector_5_near_e_minus_8 +=
-        perturbance_v * static_cast<Scalar>(1e-8);
-
     test_vector_5_near_e_minus_5 = ground_truth_vector_5;
     test_vector_5_near_e_minus_5 +=
         perturbance_v * static_cast<Scalar>(1e-5);
@@ -71,10 +67,6 @@ class EigenChecks : public testing::Test {
         dis(gen), dis(gen), dis(gen), dis(gen),
         dis(gen), dis(gen), dis(gen), dis(gen);
 
-    test_matrix_54_near_e_minus_8 = ground_truth_matrix_54;
-    test_matrix_54_near_e_minus_8 +=
-        perturbance_m * static_cast<Scalar>(1e-10);
-
     test_matrix_54_near_e_minus_5 = ground_truth_matrix_54;
     test_matrix_54_near_e_minus_5 +=
         perturbance_m * static_cast<Scalar>(1e-5);
@@ -91,14 +83,12 @@ class EigenChecks : public testing::Test {
   Eigen::Matrix<Scalar, 5, 1> ground_truth_vector_5;
   Eigen::Matrix<Scalar, Eigen::Dynamic, 1> test_vector_D;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_random;
-  Eigen::Matrix<Scalar, 5, 1> test_vector_5_near_e_minus_8;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_near_e_minus_5;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_equal;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_equal_floating_point;
   Eigen::Matrix<Scalar, 5, 4> ground_truth_matrix_54;
   Eigen::Matrix<Scalar, Eigen::Dynamic, 4> test_matrix_D4;
   Eigen::Matrix<Scalar, 5, 4> test_matrix_54_random;
-  Eigen::Matrix<Scalar, 5, 4> test_matrix_54_near_e_minus_8;
   Eigen::Matrix<Scalar, 5, 4> test_matrix_54_near_e_minus_5;
   Eigen::Matrix<Scalar, 5, 4> test_matrix_54_equal;
   Eigen::Matrix<Scalar, 5, 4> test_matrix_54_equal_floating_point;
