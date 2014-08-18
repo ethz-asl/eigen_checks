@@ -13,7 +13,7 @@ template <typename Scalar>
 class EigenChecks : public testing::Test {
  protected:
   virtual void SetUp() {
-    int random_seed_ = 43;
+    int random_seed_ = 42;
     std::mt19937 gen(random_seed_);
     std::normal_distribution<> dis(10.0, 5.0);
     Eigen::Matrix<Scalar, 5, 1> perturbance_v;
@@ -36,7 +36,7 @@ class EigenChecks : public testing::Test {
 
     test_vector_5_equal_floating_point = ground_truth_vector_5;
     test_vector_5_equal_floating_point +=
-        perturbance_v * static_cast<Scalar>(2 *
+        perturbance_v * static_cast<Scalar>(
             eigen_checks::internal::kDefaultPrecision);
 
     // Test matrix.
@@ -75,7 +75,7 @@ class EigenChecks : public testing::Test {
 
     test_matrix_54_equal_floating_point = ground_truth_matrix_54;
     test_matrix_54_equal_floating_point +=
-        perturbance_m * static_cast<Scalar>(2 *
+        perturbance_m * static_cast<Scalar>(
             eigen_checks::internal::kDefaultPrecision);
   }
 
