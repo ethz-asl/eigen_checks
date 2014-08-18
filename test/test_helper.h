@@ -36,7 +36,7 @@ class EigenChecks : public testing::Test {
 
     test_vector_5_equal_floating_point = ground_truth_vector_5;
     test_vector_5_equal_floating_point +=
-        perturbance_v * static_cast<Scalar>(
+        perturbance_v * static_cast<Scalar>(0.9 *
             eigen_checks::internal::kDefaultPrecision);
 
     // Test matrix.
@@ -75,7 +75,7 @@ class EigenChecks : public testing::Test {
 
     test_matrix_54_equal_floating_point = ground_truth_matrix_54;
     test_matrix_54_equal_floating_point +=
-        perturbance_m * static_cast<Scalar>(
+        perturbance_m * static_cast<Scalar>(0.9 *
             eigen_checks::internal::kDefaultPrecision);
   }
 
