@@ -9,6 +9,12 @@ TYPED_TEST(EigenChecks, EigenMatrixNear_Matrix_Equal) {
                                 1e-8));
 }
 
+TYPED_TEST(EigenChecks, EigenMatrixNear_Matrix_EqualFloatingPoint) {
+  EXPECT_TRUE(EIGEN_MATRIX_NEAR(
+      this->ground_truth_matrix_54, this->test_matrix_54_equal_floating_point,
+      1e-9));
+}
+
 TYPED_TEST(EigenChecks, EigenMatrixNear_Matrix_NonEqualRandom) {
   EXPECT_FALSE(EIGEN_MATRIX_NEAR(this->ground_truth_matrix_54,
                                  this->test_matrix_54_random,
@@ -31,6 +37,12 @@ TYPED_TEST(EigenChecks, EigenMatrixNear_Vector_Equal) {
   EXPECT_TRUE(EIGEN_MATRIX_NEAR(this->ground_truth_vector_5,
                                 this->test_vector_5_equal,
                                 1e-8));
+}
+
+TYPED_TEST(EigenChecks, EigenMatrixNear_Vector_EqualFloatingPoint) {
+  EXPECT_TRUE(EIGEN_MATRIX_NEAR(
+      this->ground_truth_vector_5, this->test_vector_5_equal_floating_point,
+      1e-9));
 }
 
 TYPED_TEST(EigenChecks, EigenMatrixNear_Vector_NonEqualRandom) {
