@@ -17,6 +17,14 @@
 #define TEST_P(a, b) int Test_##a##_##b()
 #endif
 
+#ifndef TYPED_TEST_CASE
+#define TYPED_TEST_CASE(a, b) int Test_##a##_##b()
+#endif
+
+#ifndef TYPED_TEST
+#define TYPED_TEST(a, b) int Test_##a##_##b()
+#endif
+
 #define UNITTEST_ENTRYPOINT \
     int main(int argc, char** argv) { \
   google::InitGoogleLogging(argv[0]); \

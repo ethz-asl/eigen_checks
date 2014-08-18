@@ -9,7 +9,7 @@ namespace internal {
 constexpr double kDefaultPrecision = 1e-20;
 
 template<typename LHSMatrix, typename RHSMatrix>
-::testing::AssertionResult matricesEqual(
+::testing::AssertionResult MatricesNear(
     const Eigen::MatrixBase<LHSMatrix>& lhs,
     const std::string& name_lhs,
     const Eigen::MatrixBase<RHSMatrix>& rhs,
