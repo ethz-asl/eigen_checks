@@ -6,7 +6,7 @@
 
 namespace eigen_checks {
 namespace internal {
-constexpr double kDefaultPrecision = 1e-8;
+constexpr double kDefaultPrecision = 1e-10;
 
 template<typename LHSMatrix, typename RHSMatrix>
 ::testing::AssertionResult MatricesNear(
