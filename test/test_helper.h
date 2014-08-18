@@ -97,4 +97,10 @@ class EigenChecks : public testing::Test {
 typedef ::testing::Types<double, float> ScalarTypes;
 TYPED_TEST_CASE(EigenChecks, ScalarTypes);
 
+#define GLOG_TEST_EXPECT_DEATH_DIFFERENT_SIZE(X) \
+  EXPECT_DEATH(X), "^Matrices have a different$")
+
+#define GLOG_TEST_EXPECT_DEATH_DIFFERENT_DATA(X) \
+  EXPECT_DEATH(X), "^The maximum difference$")
+
 #endif  // EIGEN_CHECKS_TEST_HELPER_H_
