@@ -38,7 +38,7 @@ template<typename LHSMatrix, typename RHSMatrix>
     return ::testing::AssertionSuccess();
   } else {
     ::testing::AssertionResult failure_reason(false);
-    failure_reason << "The max difference between " << name_lhs << " and "
+    failure_reason << "The maximum difference between " << name_lhs << " and "
         << name_rhs << " is " << max_diff << ", which exceeds "
         << tolerance << ", where\n";
     for (int i = 0; i < lhs.rows(); ++i) {
