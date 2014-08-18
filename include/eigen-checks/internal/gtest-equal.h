@@ -14,7 +14,8 @@ template<typename LHSMatrix, typename RHSMatrix>
     const std::string& name_lhs,
     const Eigen::MatrixBase<RHSMatrix>& rhs,
     const std::string& name_rhs,
-    typename Eigen::MatrixBase<LHSMatrix>::Scalar tolerance) {
+    typename Eigen::MatrixBase<LHSMatrix>::Scalar tolerance,
+    const std::string& name_tolerance) {
   if (lhs.rows() != rhs.rows()) {
     ::testing::AssertionResult failure_reason(false);
     failure_reason << "Matrices have a different number of rows: "
@@ -30,27 +31,36 @@ template<typename LHSMatrix, typename RHSMatrix>
     return failure_reason;
   }
 
-  if (lhs.isApprox(rhs, tolerance)) {
+  typedef typename Eigen::MatrixBase<LHSMatrix>::Scalar Scalar;
+  const Scalar max_diff = (lhs - rhs).cwiseAbs().maxCoeff();
+
+  if (max_diff <= tolerance) {
     return ::testing::AssertionSuccess();
   } else {
     ::testing::AssertionResult failure_reason(false);
+    failure_reason << "The max difference between " << name_lhs << " and "
+        << name_rhs << " is " << max_diff << ", which exceeds "
+        << tolerance << ", where\n";
     for (int i = 0; i < lhs.rows(); ++i) {
       for (int j = 0; j < lhs.cols(); ++j) {
-        const double& lij = lhs(i, j);
-        const double& rij = rhs(i, j);
+        const Scalar& lij = lhs(i, j);
+        const Scalar& rij = rhs(i, j);
+        const Scalar& diff = std::abs(lij - rij);
         if (!std::isfinite(lij) ||
             !std::isfinite(rij) ||
-            !Eigen::internal::isApprox(lij, rij, tolerance)) {
+            !diff > tolerance) {
           if (lhs.rows() == 1) {
             failure_reason <<
-                "\nMismatch at position " << j << ": " << lij << " != " << lij;
+                "\nposition " << j << " evaluates to " << lij << " and " << lij;
           } else if (lhs.cols() == 1) {
             failure_reason <<
-                "\nMismatch at position " << i << ": " << lij << " != " << rij;
+                "\nposition " << i << " evaluates to " << lij << " and " << rij;
           } else {
-            failure_reason << "\nMismatch at "
-                << i << "," << j << ": " << lij << " != " << rij;
+            failure_reason << "\nposition " << i << "," << j << " evaluates to "
+                << lij << " and " << rij;
           }
+          failure_reason << " and " << name_tolerance << " evaluates to "
+              << max_diff << ".\n";
         }
       }
     }
