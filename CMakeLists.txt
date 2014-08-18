@@ -6,30 +6,30 @@ catkin_simple()
 
 add_definitions(--std=c++0x -Wall -Wextra -pedantic)
 
-cs_add_library(${PROJECT_NAME} src/eigen_checks.cc)
+cs_add_library(${PROJECT_NAME} src/eigen-checks.cc)
 
 catkin_add_gtest(test_gtest_near
-	test/test_gtest_near.cc)
+	test/test_gtest-near.cc)
 target_link_libraries(test_gtest_near ${PROJECT_NAME})
 
 catkin_add_gtest(test_gtest_equal
-  test/test_gtest_equal.cc)
+  test/test_gtest-equal.cc)
 target_link_libraries(test_gtest_equal ${PROJECT_NAME})
 
 catkin_add_gtest(test_gtest_equal_double
-  test/test_gtest_equal_double.cc)
+  test/test_gtest-equal-double.cc)
 target_link_libraries(test_gtest_equal_double ${PROJECT_NAME})
 
 catkin_add_gtest(test_glog_near
-  test/test_glog_near.cc)
+  test/test_glog-near.cc)
 target_link_libraries(test_glog_near ${PROJECT_NAME})
 
 catkin_add_gtest(test_glog_equal
-  test/test_glog_equal.cc)
+  test/test_glog-equal.cc)
 target_link_libraries(test_glog_equal ${PROJECT_NAME})
 
 catkin_add_gtest(test_glog_equal_double
-  test/test_glog_equal_double.cc)
+  test/test_glog-equal-double.cc)
 target_link_libraries(test_glog_equal_double ${PROJECT_NAME})
 
 cs_install()
