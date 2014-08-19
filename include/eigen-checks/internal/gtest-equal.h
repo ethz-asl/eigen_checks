@@ -68,6 +68,26 @@ template<typename LHSMatrix, typename RHSMatrix>
     return failure_reason;
   }
 }
+
+template<typename LHSMatrix>
+::testing::AssertionResult MatrixZero(
+    const Eigen::MatrixBase<LHSMatrix>& lhs,
+    const std::string& name_lhs,
+    typename Eigen::MatrixBase<LHSMatrix>::Scalar tolerance,
+    const std::string& name_tolerance) {
+  if (lhs.isZero(tolerance)) {
+    return ::testing::AssertionSuccess();
+  } else {
+    // Make a copy to get the same size matrix even in the dynamic size case.
+    Eigen::Matrix<typename Eigen::MatrixBase<LHSMatrix>::Scalar,
+        Eigen::Dynamic, Eigen::Dynamic> zero;
+    zero.setZero(lhs.rows(), lhs.cols());
+    ::testing::AssertionResult failure_reason =
+        MatricesNear(lhs, name_lhs, zero, "Zero", tolerance, name_tolerance);
+    CHECK_EQ(false, static_cast<bool>(failure_reason));
+    return failure_reason;
+  }
+}
 }  // namespace internal
 }  // namespace eigen_checks
 #endif  // EIGEN_CHECKS_INTERNAL_GTEST_H_

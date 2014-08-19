@@ -16,6 +16,10 @@ catkin_add_gtest(test_gtest_equal
   test/test_gtest-equal.cc)
 target_link_libraries(test_gtest_equal ${PROJECT_NAME})
 
+catkin_add_gtest(test_gtest_zero
+  test/test_gtest-zero.cc)
+target_link_libraries(test_gtest_zero ${PROJECT_NAME})
+
 catkin_add_gtest(test_gtest_equal_double
   test/test_gtest-equal-double.cc)
 target_link_libraries(test_gtest_equal_double ${PROJECT_NAME})
@@ -27,6 +31,10 @@ target_link_libraries(test_glog_near ${PROJECT_NAME})
 catkin_add_gtest(test_glog_equal
   test/test_glog-equal.cc)
 target_link_libraries(test_glog_equal ${PROJECT_NAME})
+
+catkin_add_gtest(test_glog_zero
+  test/test_glog-zero.cc)
+target_link_libraries(test_glog_zero ${PROJECT_NAME})
 
 catkin_add_gtest(test_glog_equal_double
   test/test_glog-equal-double.cc)
