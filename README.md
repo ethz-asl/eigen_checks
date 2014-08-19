@@ -3,6 +3,8 @@ Eigen check macros
 
 A repository for glog CHECK and gtest ASSERT and EXPECT macros for Eigen types.
 
+[![Build Status](http://129.132.38.183:8080/job/eigen_checks/badge/icon)](http://129.132.38.183:8080/job/eigen_checks/)
+
 ## GLOG
 The Glog `CHECK()` macros are used to check errors and exit your program if they are found. These Eigen equivalents can be used to check conditions on matrices. See [the glog documentation](https://google-glog.googlecode.com/svn/trunk/doc/glog.html) for a full description. The general form of use is:
 
