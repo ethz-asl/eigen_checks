@@ -29,6 +29,10 @@ Checks if two matrices are equal to floating-point precision
 
 Checks if two matrices are equal to a user-specified precision.
 
+#### `CHECK_EIGEN_MATRIX_ZERO(MatrixA, Precision)`
+
+Checks if a matrix is equal to zero to a user-specified precision.
+
 ## GTEST
 The gtest macros are built to facilitate unit testing with matrix types. This library provides two pieces of functionality: an macro that defines the main function, or *entrypoint*, for a guest invocation, and several macros for testing if matrices are similar.
 
@@ -61,6 +65,10 @@ Succeeds if two matrices are equal to floating-point precision
 #### `EXPECT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision))`
 
 Succeeds if two matrices are equal to a user-specified precision.
+
+#### `EXPECT_TRUE(EIGEN_MATRIX_ZERO(MatrixA, Precision))`
+
+Succeeds if a matrix is equal to zero to a user-specified precision.
 
 
 ### Entrypoint
