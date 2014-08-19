@@ -40,4 +40,9 @@
       eigen_checks::internal::MatricesNear(                                  \
         MatrixA, #MatrixA, MatrixB, #MatrixB, Precision, #Precision))
 
+#define CHECK_EIGEN_MATRIX_ZERO(MatrixA, Precision)                          \
+  INTERNAL_EIGEN_CHECKS_MAKE_GLOG_CHECK(                                     \
+  eigen_checks::internal::MatrixZero(                                        \
+      MatrixA, #MatrixA, Precision, #Precision))
+
 #endif  // EIGEN_CHECKS_GLOG_H_

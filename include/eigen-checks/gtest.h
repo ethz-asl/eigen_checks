@@ -20,4 +20,7 @@
   eigen_checks::internal::MatricesNear(MatrixA, #MatrixA, MatrixB, #MatrixB, \
                                        Precision, #Precision)
 
+#define EIGEN_MATRIX_ZERO(MatrixA, Precision)                                \
+  eigen_checks::internal::MatrixZero(MatrixA, #MatrixA, Precision, #Precision)
+
 #endif  // EIGEN_CHECKS_GTEST_H_

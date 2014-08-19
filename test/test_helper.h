@@ -22,6 +22,8 @@ class EigenChecks : public testing::Test {
 
     ground_truth_vector_5 << dis(gen), dis(gen), dis(gen), dis(gen), dis(gen);
 
+    ground_truth_vector_5_zero.setZero();
+
     test_vector_D.resize(4, Eigen::NoChange);
     test_vector_D.template block<4, 1>(0, 0) =
         ground_truth_vector_5.template block<4, 1>(0, 0);
@@ -56,6 +58,8 @@ class EigenChecks : public testing::Test {
         dis(gen), dis(gen), dis(gen), dis(gen),
         dis(gen), dis(gen), dis(gen), dis(gen);
 
+    ground_truth_matrix_54_zero.setZero();
+
     test_matrix_D4.resize(4, Eigen::NoChange);
     test_matrix_D4.template block<4, 4>(0, 0) =
         ground_truth_matrix_54.template block<4, 4>(0, 0);
@@ -81,12 +85,14 @@ class EigenChecks : public testing::Test {
 
  protected:
   Eigen::Matrix<Scalar, 5, 1> ground_truth_vector_5;
+  Eigen::Matrix<Scalar, 5, 1> ground_truth_vector_5_zero;
   Eigen::Matrix<Scalar, Eigen::Dynamic, 1> test_vector_D;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_random;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_near_e_minus_5;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_equal;
   Eigen::Matrix<Scalar, 5, 1> test_vector_5_equal_floating_point;
   Eigen::Matrix<Scalar, 5, 4> ground_truth_matrix_54;
+  Eigen::Matrix<Scalar, 5, 4> ground_truth_matrix_54_zero;
   Eigen::Matrix<Scalar, Eigen::Dynamic, 4> test_matrix_D4;
   Eigen::Matrix<Scalar, 5, 4> test_matrix_54_random;
   Eigen::Matrix<Scalar, 5, 4> test_matrix_54_near_e_minus_5;
