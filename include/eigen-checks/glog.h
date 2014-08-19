@@ -23,7 +23,7 @@
   INTERNAL_EIGEN_CHECKS_MAKE_GLOG_CHECK(                                     \
     eigen_checks::internal::MatricesNear(                                    \
     MatrixA, #MatrixA, MatrixB, #MatrixB,                                    \
-    static_cast<typename eigen_checks::internal::RemoveCR<                   \
+    static_cast<typename std::remove_reference<                              \
     decltype(MatrixA)>::type::Scalar>(0.0), "0.0"))
 
 #define CHECK_EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB)                    \
