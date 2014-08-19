@@ -18,14 +18,14 @@ template<typename LHSMatrix, typename RHSMatrix>
     const std::string& name_tolerance) {
   if (lhs.rows() != rhs.rows()) {
     ::testing::AssertionResult failure_reason(false);
-    failure_reason << "Matrices have a different number of rows: "
+    failure_reason << "The matrices have a different number of rows: "
         << name_lhs << " has " << lhs.rows() << " rows while " << name_rhs
         << " has " << rhs.rows() << " rows." << std::endl;
     return failure_reason;
   }
   if (lhs.cols() != rhs.cols()) {
     ::testing::AssertionResult failure_reason(false);
-    failure_reason << "Matrices have a different number of cols: "
+    failure_reason << "The matrices have a different number of cols: "
         << name_lhs << " has " << lhs.cols() << " cols while " << name_rhs
         << " cols " << rhs.cols() << " cols." << std::endl;
     return failure_reason;
@@ -38,9 +38,9 @@ template<typename LHSMatrix, typename RHSMatrix>
     return ::testing::AssertionSuccess();
   } else {
     ::testing::AssertionResult failure_reason(false);
-    failure_reason << "The maximum difference between " << name_lhs << " and "
-        << name_rhs << " is " << max_diff << ", which exceeds "
-        << tolerance << ", where\n";
+    failure_reason << "The matrices are different. The maximum difference "
+        << "between " << name_lhs << " and " << name_rhs << " is " << max_diff
+        << ", which exceeds " << tolerance << ", where\n";
     for (int i = 0; i < lhs.rows(); ++i) {
       for (int j = 0; j < lhs.cols(); ++j) {
         const Scalar& lij = lhs(i, j);
