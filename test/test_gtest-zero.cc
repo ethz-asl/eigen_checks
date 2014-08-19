@@ -20,7 +20,7 @@ TYPED_TEST(EigenChecks, EigenMatrixZeroGTest_Matrix_Near5) {
 }
 
 TYPED_TEST(EigenChecks, EigenMatrixZeroGTest_Vector_Equal) {
-  EXPECT_TRUE(EIGEN_MATRIX_ZERO(this->test_vector_5_equal, 1e-8));
+  EXPECT_TRUE(EIGEN_MATRIX_ZERO(this->ground_truth_vector_5_zero, 1e-8));
 }
 
 TYPED_TEST(EigenChecks, EigenMatrixZeroGTest_Vector_NonEqualRandom) {

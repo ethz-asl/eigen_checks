@@ -79,8 +79,9 @@ template<typename LHSMatrix>
     return ::testing::AssertionSuccess();
   } else {
     // Make a copy to get the same size matrix even in the dynamic size case.
-    Eigen::MatrixBase<LHSMatrix> zero = lhs;
-    zero.setZero();
+    Eigen::Matrix<typename Eigen::MatrixBase<LHSMatrix>::Scalar,
+        Eigen::Dynamic, Eigen::Dynamic> zero;
+    zero.setZero(lhs.rows(), lhs.cols());
     ::testing::AssertionResult failure_reason =
         MatricesNear(lhs, name_lhs, zero, "Zero", tolerance, name_tolerance);
     CHECK_EQ(false, static_cast<bool>(failure_reason));
