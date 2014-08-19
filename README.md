@@ -17,15 +17,15 @@ To get these macros, use:
 #include<eigen-checks/glog.h>
 ```
 
-### `CHECK_EIGEN_MATRIX_EQUAL(MatrixA, MatrixB)`
+#### `CHECK_EIGEN_MATRIX_EQUAL(MatrixA, MatrixB)`
 
 Checks if two matrices are binary equal.
 
-### `CHECK_EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB)`
+#### `CHECK_EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB)`
 
 Checks if two matrices are equal to floating-point precision
 
-### `CHECK_EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision)`
+#### `CHECK_EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision)`
 
 Checks if two matrices are equal to a user-specified precision.
 
@@ -50,15 +50,15 @@ To get these macros, use:
 #include<eigen-checks/gtest.h>
 ```
 
-### `EXPECT_TRUE(EIGEN_MATRIX_EQUAL(MatrixA, MatrixB))`
+#### `EXPECT_TRUE(EIGEN_MATRIX_EQUAL(MatrixA, MatrixB))`
 
 Succeeds if two matrices are binary equal.
 
-### `EXPECT_TRUE(EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB))`
+#### `EXPECT_TRUE(EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB))`
 
 Succeeds if two matrices are equal to floating-point precision
 
-### `EXPECT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision))`
+#### `EXPECT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, Precision))`
 
 Succeeds if two matrices are equal to a user-specified precision.
 
