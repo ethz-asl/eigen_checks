@@ -7,7 +7,6 @@ catkin_simple()
 add_definitions(--std=c++0x -Wall -Wextra -pedantic)
 
 cs_add_library(${PROJECT_NAME} src/eigen-checks.cc)
-target_link_libraries(${PROJECT_NAME} pthread)
 
 catkin_add_gtest(test_gtest_near
 	test/test_gtest-near.cc)
