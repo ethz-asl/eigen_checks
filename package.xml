@@ -9,8 +9,6 @@
   <url type="website">https://github.com/ethz-asl/eigen_checks</url>
   <url type="bugtracker">https://github.com/ethz-asl/eigen_checks/issues</url>
 
-  <author>Simon Lynen</author>
-
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>catkin_simple</buildtool_depend>
 
