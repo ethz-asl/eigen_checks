@@ -41,6 +41,14 @@ catkin_add_gtest(test_glog_equal_double
   test/test_glog-equal-double.cc)
 target_link_libraries(test_glog_equal_double ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
+catkin_add_gtest(test_glog-zero-sized-types
+  test/test_glog-zero-sized-types.cc)
+target_link_libraries(test_glog-zero-sized-types ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
+
+catkin_add_gtest(test_gtest-zero-sized-types
+  test/test_gtest-zero-sized-types.cc)
+target_link_libraries(test_gtest-zero-sized-types ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
+
 cs_install()
 
 cs_export(INCLUDE_DIRS include
