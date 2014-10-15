@@ -32,6 +32,11 @@ template<typename LHSMatrix, typename RHSMatrix>
     return failure_reason;
   }
 
+  // Early exit for dynamic-sized matrices where one dimension is zero. No need to check values...
+  if(rhs.rows() == 0 || rhs.cols() == 0 || lhs.rows() == 0 || lhs.cols() == 0) {
+    return ::testing::AssertionSuccess();
+  }
+
   typedef typename Eigen::MatrixBase<LHSMatrix>::Scalar Scalar;
   const Scalar max_diff = (lhs - rhs).cwiseAbs().maxCoeff();
 
@@ -49,7 +54,7 @@ template<typename LHSMatrix, typename RHSMatrix>
         const Scalar& diff = std::abs(lij - rij);
         if (!std::isfinite(lij) ||
             !std::isfinite(rij) ||
-            !diff > tolerance) {
+             diff > tolerance) {
           if (lhs.rows() == 1) {
             failure_reason <<
                 "\nposition " << j << " evaluates to " << lij << " and " << lij;
@@ -60,12 +65,10 @@ template<typename LHSMatrix, typename RHSMatrix>
             failure_reason << "\nposition " << i << "," << j << " evaluates to "
                 << lij << " and " << rij;
           }
-          failure_reason << " and " << name_tolerance << " evaluates to "
-              << max_diff << ".\n";
+          failure_reason << " with a tolerance of " << name_tolerance << ".\n";
         }
       }
     }
-    failure_reason << "\n";
     return failure_reason;
   }
 }
