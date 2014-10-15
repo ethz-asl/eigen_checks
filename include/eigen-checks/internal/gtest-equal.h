@@ -2,6 +2,7 @@
 #define EIGEN_CHECKS_INTERNAL_GTEST_H_
 
 #include <Eigen/Dense>
+#include <glog/logging.h>
 #include <gtest/gtest.h>
 
 namespace eigen_checks {
