@@ -8,37 +8,38 @@ add_definitions(--std=c++0x -Wall -Wextra -pedantic)
 
 cs_add_library(${PROJECT_NAME} src/eigen-checks.cc)
 
+find_package (Threads)
 catkin_add_gtest(test_gtest_near
 	test/test_gtest-near.cc)
-target_link_libraries(test_gtest_near ${PROJECT_NAME})
+target_link_libraries(test_gtest_near ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_gtest_equal
   test/test_gtest-equal.cc)
-target_link_libraries(test_gtest_equal ${PROJECT_NAME})
+target_link_libraries(test_gtest_equal ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_gtest_zero
   test/test_gtest-zero.cc)
-target_link_libraries(test_gtest_zero ${PROJECT_NAME})
+target_link_libraries(test_gtest_zero ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_gtest_equal_double
   test/test_gtest-equal-double.cc)
-target_link_libraries(test_gtest_equal_double ${PROJECT_NAME})
+target_link_libraries(test_gtest_equal_double ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_glog_near
   test/test_glog-near.cc)
-target_link_libraries(test_glog_near ${PROJECT_NAME})
+target_link_libraries(test_glog_near ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_glog_equal
   test/test_glog-equal.cc)
-target_link_libraries(test_glog_equal ${PROJECT_NAME})
+target_link_libraries(test_glog_equal ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_glog_zero
   test/test_glog-zero.cc)
-target_link_libraries(test_glog_zero ${PROJECT_NAME})
+target_link_libraries(test_glog_zero ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 catkin_add_gtest(test_glog_equal_double
   test/test_glog-equal-double.cc)
-target_link_libraries(test_glog_equal_double ${PROJECT_NAME})
+target_link_libraries(test_glog_equal_double ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
 cs_install()
 
