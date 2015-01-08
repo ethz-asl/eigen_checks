@@ -29,6 +29,8 @@ template<typename LHSMatrix, typename RHSMatrix>
     failure_reason << "The matrices have a different number of cols: "
         << name_lhs << " has " << lhs.cols() << " cols while " << name_rhs
         << " cols " << rhs.cols() << " cols." << std::endl;
+    failure_reason << name_lhs << ":\n" << lhs << std::endl;
+    failure_reason << name_rhs << ":\n" << rhs << std::endl;
     return failure_reason;
   }
 
@@ -69,6 +71,9 @@ template<typename LHSMatrix, typename RHSMatrix>
         }
       }
     }
+    failure_reason << name_lhs << ":\n" << lhs << std::endl;
+    failure_reason << name_rhs << ":\n" << rhs << std::endl;
+    failure_reason << "Difference:\n" << (lhs - rhs) << std::endl;
     return failure_reason;
   }
 }
