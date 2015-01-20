@@ -21,16 +21,16 @@ template<typename LHSMatrix, typename RHSMatrix>
     ::testing::AssertionResult failure_reason(false);
     failure_reason << "The matrices have a different number of rows: "
         << name_lhs << " has " << lhs.rows() << " rows while " << name_rhs
-        << " has " << rhs.rows() << " rows./n";
+        << " has " << rhs.rows() << " rows.\n";
     return failure_reason;
   }
   if (lhs.cols() != rhs.cols()) {
     ::testing::AssertionResult failure_reason(false);
     failure_reason << "The matrices have a different number of cols: "
         << name_lhs << " has " << lhs.cols() << " cols while " << name_rhs
-        << " cols " << rhs.cols() << " cols./n";
-    failure_reason << name_lhs << ":\n" << lhs << "/n";
-    failure_reason << name_rhs << ":\n" << rhs << "/n";
+        << " cols " << rhs.cols() << " cols.\n";
+    failure_reason << name_lhs << ":\n" << lhs << "\n";
+    failure_reason << name_rhs << ":\n" << rhs << "\n";
     return failure_reason;
   }
 
@@ -71,9 +71,9 @@ template<typename LHSMatrix, typename RHSMatrix>
         }
       }
     }
-    failure_reason << name_lhs << ":\n" << lhs << "/n";
-    failure_reason << name_rhs << ":\n" << rhs << "/n";
-    failure_reason << "Difference:\n" << (lhs - rhs) << "/n";
+    failure_reason << name_lhs << ":\n" << lhs << "\n";
+    failure_reason << name_rhs << ":\n" << rhs << "\n";
+    failure_reason << "Difference:\n" << (lhs - rhs) << "\n";
     return failure_reason;
   }
 }
