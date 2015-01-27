@@ -1,6 +1,7 @@
 #ifndef EIGEN_CHECKS_ENTRYPOINT_H_
 #define EIGEN_CHECKS_ENTRYPOINT_H_
 
+#include <gflags/gflags.h>
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
