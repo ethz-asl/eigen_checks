@@ -3,8 +3,6 @@ Eigen check macros
 
 A repository for glog CHECK and gtest ASSERT and EXPECT macros for Eigen types.
 
-[![Build Status](http://129.132.38.183:8080/job/eigen_checks/badge/icon)](http://129.132.38.183:8080/job/eigen_checks/)
-
 ## GLOG
 The Glog `CHECK()` macros are used to check errors and exit your program if they are found. These Eigen equivalents can be used to check conditions on matrices. See [the glog documentation](https://google-glog.googlecode.com/svn/trunk/doc/glog.html) for a full description. The general form of use is:
 
@@ -36,7 +34,7 @@ Checks if two matrices are equal to a user-specified precision.
 Checks if a matrix is equal to zero to a user-specified precision.
 
 ## GTEST
-The gtest macros are built to facilitate unit testing with matrix types. This library provides two pieces of functionality: an macro that defines the main function, or *entrypoint*, for a guest invocation, and several macros for testing if matrices are similar.
+The gtest macros are built to facilitate unit testing with matrix types. This library provides two pieces of functionality: an macro that defines the main function, or *entrypoint*, for a gtest invocation, and several macros for testing if matrices are similar.
 
 ### GTest 
 The Gtest `EXPECT()` and `ASSERT()` macros are used to verify assumptions in your tests and print useful information in case these don't match the expected outcome. These Eigen equivalents can be used to check conditions on matrices. See [the gtest documentation](https://code.google.com/p/googletest/wiki/Primer#Assertions) for a full description. The general form of use is:
