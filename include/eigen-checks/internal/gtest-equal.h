@@ -33,6 +33,41 @@ namespace eigen_checks {
 namespace internal {
 constexpr double kDefaultPrecision = 1e-10;
 
+template<typename LeftMat, typename RightMat>
+::testing::AssertionResult MatricesEqual(const LeftMat& A,
+                                         const std::string& name_lhs,
+                                         const RightMat& B,
+                                         const std::string& name_rhs,
+                                         double threshold,
+                                         const std::string& name_threshold) {
+  if (A.rows() != B.rows() || A.cols() != B.cols()) {
+    return ::testing::AssertionFailure()
+      << "Matrix size mismatch: "
+      << A.rows() << "x" << A.cols() << " (" << name_lhs << ") != "
+      << B.rows() << "x" << B.cols() << " (" << name_rhs << ")";
+  }
+
+  bool success = true;
+  std::string message;
+  for (int i = 0; i < A.rows(); ++i) {
+    for (int j = 0; j < A.cols(); ++j) {
+      double Aij = A(i, j);
+      double Bij = B(i, j);
+      if (std::abs(Aij - Bij) > threshold) {
+        success = false;
+        message +=
+            "\n  Mismatch at [" + std::to_string(i) + "," + std::to_string(j) +
+            "] : " + std::to_string(Aij) + " != " + std::to_string(Bij) +
+            " (" + name_threshold + " = " + std::to_string(threshold) + ")";
+      }
+    }
+  }
+
+  return success ?
+      ::testing::AssertionSuccess() :
+      ::testing::AssertionFailure() << message << std::endl;
+}
+
 template<typename LHSMatrix, typename RHSMatrix>
 ::testing::AssertionResult MatricesNear(
     const Eigen::MatrixBase<LHSMatrix>& lhs,
