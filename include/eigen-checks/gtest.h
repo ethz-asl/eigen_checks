@@ -30,12 +30,12 @@
 #include <eigen-checks/internal/gtest-equal.h>
 
 #define EIGEN_MATRIX_EQUAL(MatrixA, MatrixB)                                 \
-  eigen_checks::internal::MatricesNear(MatrixA, #MatrixA, MatrixB, #MatrixB, \
+  eigen_checks::internal::MatricesEqual(MatrixA, #MatrixA, MatrixB, #MatrixB, \
       static_cast<typename std::remove_reference<                            \
       decltype(MatrixA)>::type::Scalar>(0.0), "0.0")
 
 #define EIGEN_MATRIX_EQUAL_DOUBLE(MatrixA, MatrixB)                          \
-  eigen_checks::internal::MatricesNear(MatrixA, #MatrixA, MatrixB, #MatrixB, \
+  eigen_checks::internal::MatricesEqual(MatrixA, #MatrixA, MatrixB, #MatrixB, \
       static_cast<typename std::remove_reference<                            \
       decltype(MatrixA)>::type::Scalar>(                                     \
       eigen_checks::internal::kDefaultPrecision), "Floating point precision")
