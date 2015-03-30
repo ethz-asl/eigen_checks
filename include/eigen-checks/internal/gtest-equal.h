@@ -35,13 +35,16 @@ constexpr double kDefaultPrecision = 1e-10;
 
 template<typename LeftMat, typename RightMat>
 ::testing::AssertionResult MatricesEqual(const LeftMat& A,
+                                         const std::string& name_lhs,
                                          const RightMat& B,
-                                         double threshold) {
+                                         const std::string& name_rhs,
+                                         double threshold,
+                                         const std::string& name_threshold) {
   if (A.rows() != B.rows() || A.cols() != B.cols()) {
     return ::testing::AssertionFailure()
       << "Matrix size mismatch: "
-      << A.rows() << "x" << A.cols() << " != "
-      << B.rows() << "x" << B.cols();
+      << A.rows() << "x" << A.cols() << " (" << name_lhs << ") != "
+      << B.rows() << "x" << B.cols() << " (" << name_rhs << ")";
   }
 
   bool success = true;
@@ -54,7 +57,8 @@ template<typename LeftMat, typename RightMat>
         success = false;
         message +=
             "\n  Mismatch at [" + std::to_string(i) + "," + std::to_string(j) +
-            "] : " + std::to_string(Aij) + " != " + std::to_string(Bij);
+            "] : " + std::to_string(Aij) + " != " + std::to_string(Bij) +
+            " (" + name_threshold + " = " + std::to_string(threshold) + ")";
       }
     }
   }
