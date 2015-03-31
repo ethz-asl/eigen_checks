@@ -2,9 +2,9 @@
   <name>eigen_checks</name>
   <version>0.0.1</version>
   <description>Glog and Gtest check, assert, expect macros for eigen types.</description>
-  <maintainer email="simon.lynen@mavt.ethz.ch">Simon Lynen</maintainer>
+  <maintainer email="simon.lynen@mavt.ethz.ch">simonlynen</maintainer>
 
-  <license>ASL 2.0</license>
+  <license>New BSD</license>
 
   <url type="website">https://github.com/ethz-asl/eigen_checks</url>
   <url type="bugtracker">https://github.com/ethz-asl/eigen_checks/issues</url>
