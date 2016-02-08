@@ -118,7 +118,7 @@ template<typename LHSMatrix, typename RHSMatrix>
              diff > tolerance) {
           if (lhs.rows() == 1) {
             failure_reason <<
-                "\nposition " << j << " evaluates to " << lij << " and " << lij;
+                "\nposition " << j << " evaluates to " << lij << " and " << rij;
           } else if (lhs.cols() == 1) {
             failure_reason <<
                 "\nposition " << i << " evaluates to " << lij << " and " << rij;
