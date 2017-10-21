@@ -48,6 +48,9 @@
 #define EIGEN_MATRIX_ZERO(MatrixA, Precision)                                \
   eigen_checks::internal::MatrixZero(MatrixA, #MatrixA, Precision, #Precision)
 
+#define EIGEN_QUATERNION_NEAR(QuatA, QuatB, Precision)                   \
+  eigen_checks::internal::QuaternionsNear(QuatA, #QuatA, QuatB, #QuatB,  \
+                                          Precision, #Precision)
 
 #define EXPECT_NEAR_EIGEN(MatrixA, MatrixB, precision) \
   EXPECT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, precision))
@@ -55,23 +58,10 @@
 #define ASSERT_NEAR_EIGEN(MatrixA, MatrixB, precision) \
   ASSERT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, precision))
 
-
-// TODO: Reformulate
-
-#define __INTERNAL_GTEST_NEAR_EIGEN_QUATERNION(                               \
-    PREDICATE, quat_A, quat_B, precision)                                     \
-  PREDICATE##_TRUE((quat_A).isApprox((quat_B), precision))                    \
-      << "For quaternions '" << #quat_A << "' and '" << #quat_B << "'."       \
-      << std::endl                                                            \
-      << "Where '" << #quat_A << "' equals: " << (quat_A).coeffs()            \
-      << std::endl                                                            \
-      << "and '" << #quat_B << "' equals: " << (quat_B).coeffs() << std::endl \
-      << "and precision equals: " << precision << " rad";
-
 #define EXPECT_NEAR_EIGEN_QUATERNION(quat_A, quat_B, precision) \
-  __INTERNAL_GTEST_NEAR_EIGEN_QUATERNION(EXPECT, quat_A, quat_B, precision)
+  EXPECT_TRUE(EIGEN_QUATERNION_NEAR(quat_A, quat_B, precision))
 
 #define ASSERT_NEAR_EIGEN_QUATERNION(quat_A, quat_B, precision) \
-  __INTERNAL_GTEST_NEAR_EIGEN_QUATERNION(ASSERT, quat_A, quat_B, precision)
+  ASSERT_TRUE(EIGEN_QUATERNION_NEAR(quat_A, quat_B, precision))
 
 #endif  // EIGEN_CHECKS_GTEST_H_
