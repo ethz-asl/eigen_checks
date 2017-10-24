@@ -156,6 +156,42 @@ template<typename LHSMatrix>
     return failure_reason;
   }
 }
+
+template<typename Scalar>
+::testing::AssertionResult QuaternionsNear(
+    const Eigen::Quaternion<Scalar>& lhs,
+    const std::string& name_lhs,
+    const Eigen::Quaternion<Scalar>& rhs,
+    const std::string& name_rhs,
+    const Scalar tolerance,
+    const std::string& name_tolerance) {
+  const Scalar max_diff = (lhs.coeffs() - rhs.coeffs()).cwiseAbs().maxCoeff();
+  
+  if (max_diff <= tolerance) {
+    return ::testing::AssertionSuccess();
+  } else {
+    ::testing::AssertionResult failure_reason(false);
+    failure_reason << "The quaternions are different. The maximum difference "
+                   << "between " << name_lhs << " and " << name_rhs << " is " << max_diff
+                   << ", which exceeds " << tolerance << ", where\n";
+    for (int i = 0; i < lhs.coeffs().rows(); ++i) {
+      const Scalar& li = lhs.coeffs()(i);
+      const Scalar& ri = rhs.coeffs()(i);
+        const Scalar& diff = std::abs(li - ri);
+        if (!std::isfinite(li) ||
+            !std::isfinite(ri) ||
+             diff > tolerance) {
+          failure_reason << "\nposition " << i << " evaluates to " << li << " and " << ri;
+          failure_reason << " with a tolerance of " << name_tolerance << ".\n";
+        }
+    }
+    failure_reason << name_lhs << ":\n" << lhs.coeffs() << "\n";
+    failure_reason << name_rhs << ":\n" << rhs.coeffs() << "\n";
+    failure_reason << "Difference:\n" << (lhs.coeffs() - rhs.coeffs()) << "\n";
+    return failure_reason;
+  }
+}
+
 }  // namespace internal
 }  // namespace eigen_checks
 #endif  // EIGEN_CHECKS_INTERNAL_GTEST_H_

@@ -26,6 +26,7 @@
 #define EIGEN_CHECKS_GTEST_H_
 #include <limits>
 #include <type_traits>
+#include <gtest/gtest.h>
 
 #include <eigen-checks/internal/gtest-equal.h>
 
@@ -46,5 +47,21 @@
 
 #define EIGEN_MATRIX_ZERO(MatrixA, Precision)                                \
   eigen_checks::internal::MatrixZero(MatrixA, #MatrixA, Precision, #Precision)
+
+#define EIGEN_QUATERNION_NEAR(QuatA, QuatB, Precision)                   \
+  eigen_checks::internal::QuaternionsNear(QuatA, #QuatA, QuatB, #QuatB,  \
+                                          Precision, #Precision)
+
+#define EXPECT_NEAR_EIGEN(MatrixA, MatrixB, precision) \
+  EXPECT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, precision))
+
+#define ASSERT_NEAR_EIGEN(MatrixA, MatrixB, precision) \
+  ASSERT_TRUE(EIGEN_MATRIX_NEAR(MatrixA, MatrixB, precision))
+
+#define EXPECT_NEAR_EIGEN_QUATERNION(quat_A, quat_B, precision) \
+  EXPECT_TRUE(EIGEN_QUATERNION_NEAR(quat_A, quat_B, precision))
+
+#define ASSERT_NEAR_EIGEN_QUATERNION(quat_A, quat_B, precision) \
+  ASSERT_TRUE(EIGEN_QUATERNION_NEAR(quat_A, quat_B, precision))
 
 #endif  // EIGEN_CHECKS_GTEST_H_
